@@ -9,6 +9,7 @@
         "awcodes/filament-curator": "^3.6.9",
         "awcodes/filament-quick-create": "^3.4.2",
         "bezhansalleh/filament-language-switch": "^3.1",
+        "doctrine/dbal": "^4.1",
         "filament/filament": "^3.2.115",
         "jeffgreco13/filament-breezy": "^2.4.5",
         "joaopaulolndev/filament-world-clock": "^1.0.9",
@@ -16,6 +17,7 @@
         "laravel/tinker": "^2.10",
         "mohamedsabil83/filament-forms-tinyeditor": "^2.3.2",
         "njxqlus/filament-progressbar": "^1.0.1",
+        "ryangjchandler/blade-tabler-icons": "^2.3",
         "shuvroroy/filament-spatie-laravel-backup": "^2.2",
         "voltra/filament-svg-avatar": "^1.2.7"
     },

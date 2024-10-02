@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   class="img-fluid"
+   id="outputsvg"
+   style="transform: matrix(0.856831, 0, 0, 0.856831, 0, 0); transform-origin: 50% 50% 0px; cursor: move; transition: none;"
+   width="240"
+   height="288"
+   viewBox="0 0 2400 2880"
+   version="1.1"
+   sodipodi:docname="gold.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.5520833"
+     inkscape:cx="120.09796"
+     inkscape:cy="144"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="outputsvg" />
+  <g
+     id="g4"
+     inkscape:export-filename="gold.png"
+     inkscape:export-xdpi="520.26001"
+     inkscape:export-ydpi="520.26001">
+    <g
+       id="l2ofg2rg8IiyAOhK7slwkYt"
+       fill="#000000"
+       style="display:inline">
+      <g
+         id="g1">
+        <path
+           id="p1CreYFFLI"
+           d="m 970,2143 c -14,-2 -43,-12 -65,-22 -22,-11 -69,-32 -105,-47 -205,-86 -393,-281 -477,-494 -19,-47 -41,-97 -49,-112 -7,-14 -14,-36 -14,-47 0,-21 3,-21 209,-21 208,0 208,0 239,63 17,34 44,78 61,97 30,35 30,35 30,-339 0,-374 0,-374 -22,-352 -13,11 -42,57 -66,101 -43,80 -43,80 -249,78 -207,-3 -207,-3 -204,-28 2,-14 9,-34 16,-45 7,-11 23,-50 35,-86 40,-123 153,-286 259,-376 103,-88 194,-141 307,-180 116,-39 125,-42 129,-34 4,6 9,349 7,396 -1,6 -28,23 -61,39 -33,16 -76,43 -97,62 -38,33 -38,33 330,34 202,0 367,-4 367,-8 0,-12 -97,-77 -142,-96 -28,-11 -38,-21 -38,-38 -2,-141 0,-391 3,-394 5,-5 184,59 229,82 153,79 297,210 382,347 52,83 112,230 118,287 3,35 3,35 -197,35 -200,0 -200,0 -238,-70 -38,-70 -72,-113 -81,-104 -3,3 -7,165 -8,361 -3,357 -3,357 24,331 15,-14 43,-57 63,-95 36,-68 36,-68 238,-66 202,3 202,3 199,32 -6,51 -78,219 -127,296 -95,148 -264,288 -426,355 -43,17 -84,36 -91,42 -20,16 -76,24 -84,12 -5,-9 -6,-144 -4,-397 0,-7 24,-24 53,-37 28,-13 72,-42 97,-64 45,-40 45,-40 -335,-40 -380,0 -380,0 -341,34 21,19 67,49 102,67 64,33 64,33 64,235 0,111 -3,203 -7,205 -5,2 -19,3 -33,1 z m 488,-925 c -2,-4 -63,-68 -137,-142 -133,-135 -133,-135 -263,-8 -71,70 -136,131 -145,136 -12,6 15,38 128,150 144,141 144,141 282,6 75,-74 136,-138 135,-142 z" />
+      </g>
+    </g>
+    <g
+       id="l1inpJVnPX754iBd8ReLXb8"
+       fill="rgb(242,198,62)"
+       style="transform: none;">
+      <g
+         style="transform: none;"
+         id="g2">
+        <path
+           id="pVMPVOJAx"
+           d="M 1016 1385 c -123 -119 -166 -167 -160 -177 5 -8 65 -68 134 -134 69 -66 139 -134 157 -152 17 -18 35 -32 40 -32 9 0 326 314 331 328 2 7 -300 311 -324 325 -6 3 -86 -67 -178 -158 z " />
+      </g>
+    </g>
+    <g
+       id="texts"
+       style="transform: none;">
+      <g
+         style="transform: none;"
+         id="g3">
+        <text
+           fill="#000000"
+           font-family="Arial"
+           x="48.970245%"
+           y="82.70374%"
+           text-anchor="middle"
+           dominant-baseline="central"
+           font-size="458"
+           id="text2"
+           style="-inkscape-font-specification:Serpentine;font-family:Serpentine;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">GOLD</text>
+      </g>
+    </g>
+  </g>
+</svg>

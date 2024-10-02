@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   class="img-fluid"
+   id="outputsvg"
+   style="transform: none; transform-origin: 50% 50% 0px; cursor: move; transition: none;"
+   width="240"
+   height="288"
+   viewBox="0 0 2400 2880"
+   version="1.1"
+   sodipodi:docname="silver.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.5520833"
+     inkscape:cx="120.09796"
+     inkscape:cy="144"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="outputsvg" />
+  <g
+     id="g5">
+    <g
+       id="lkd1d2S5JdVQuytAHNtvNM"
+       fill="rgb(0,0,3)"
+       style="transform: none;">
+      <g
+         style="transform: none;"
+         id="g2">
+        <path
+           id="ps3FXOip6"
+           d="M1053 2140 c-34 -5 -70 -13 -80 -18 -10 -5 -35 -12 -55 -16 -39 -7 -132 -49 -210 -94 -65 -38 -178 -131 -178 -147 0 -8 24 -22 53 -33 55 -21 221 -97 247 -113 8 -5 22 -12 30 -15 22 -8 53 -23 70 -32 15 -9 48 -24 168 -78 35 -16 65 -31 68 -35 2 -3 -13 -25 -34 -47 -50 -55 -89 -103 -277 -340 -24 -30 -48 -51 -60 -51 -12 -1 -38 20 -65 53 -96 114 -374 401 -389 401 -22 0 -55 -93 -83 -240 -15 -74 -5 -289 16 -360 50 -167 93 -254 180 -366 64 -82 210 -205 296 -249 36 -18 77 -39 92 -47 14 -7 38 -13 51 -13 14 0 29 -4 32 -10 9 -14 75 -13 75 2 0 6 -7 37 -15 67 -8 31 -26 110 -41 176 -14 66 -34 154 -45 195 -45 182 -70 300 -64 310 6 10 726 15 737 5 3 -3 0 -32 -7 -63 -23 -98 -57 -284 -67 -357 -5 -38 -15 -92 -23 -119 -8 -27 -15 -67 -15 -87 0 -21 -5 -50 -11 -66 -8 -23 -7 -30 7 -40 23 -17 69 -16 102 1 15 8 56 29 92 47 107 53 220 149 299 252 38 51 75 103 80 117 6 14 15 32 20 40 33 52 73 173 93 280 14 75 4 313 -15 370 -9 25 -20 63 -26 85 -14 55 -34 80 -52 69 -9 -5 -60 -56 -114 -114 -54 -58 -131 -139 -169 -180 -39 -41 -90 -97 -112 -124 -26 -30 -46 -46 -54 -41 -6 4 -57 64 -112 134 -129 161 -183 227 -226 273 l-35 37 69 32 c147 69 230 107 244 113 8 3 22 10 30 15 28 17 205 98 242 110 47 16 62 33 45 53 -36 46 -168 139 -247 173 -19 9 -47 22 -61 30 -14 8 -46 17 -70 21 -24 4 -57 13 -72 21 -34 17 -264 26 -354 13z m286 -855 c58 -71 111 -136 118 -143 7 -7 13 -15 13 -18 0 -2 -122 -4 -270 -4 l-270 0 62 78 c35 43 96 120 137 171 73 92 73 92 89 69 9 -13 64 -81 121 -153z" />
+      </g>
+    </g>
+    <g
+       id="l7SYe20321iaHTgNaQ6Gvk5"
+       fill="rgb(192,226,229)"
+       style="transform: none;">
+      <g
+         style="transform: none;"
+         id="g3">
+        <path
+           id="p1H3ZjZkn0"
+           d="M1116 1422 c-117 -150 -185 -234 -218 -270 -56 -62 -56 -62 317 -62 184 0 335 2 335 4 0 3 -10 16 -22 30 -28 30 -27 29 -159 191 -58 72 -114 143 -124 158 -38 58 -46 55 -129 -51z" />
+      </g>
+    </g>
+    <g
+       id="texts"
+       style="transform: none;">
+      <g
+         style="transform: none;"
+         id="g4">
+        <text
+           fill="#000000"
+           font-family="Arial"
+           x="49.67833%"
+           y="82.97423%"
+           text-anchor="middle"
+           dominant-baseline="central"
+           font-size="505"
+           id="text3"
+           style="-inkscape-font-specification:Serpentine;font-family:Serpentine;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">SILVER</text>
+      </g>
+    </g>
+  </g>
+</svg>
