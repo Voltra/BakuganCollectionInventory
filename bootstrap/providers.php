@@ -2,4 +2,7 @@
 
 return [
     App\Providers\AppServiceProvider::class,
+    App\Providers\DebugServiceProvider::class,
+    App\Providers\FilamentTweaksServiceProvider::class,
+    App\Providers\Filament\AdminPanelProvider::class,
 ];

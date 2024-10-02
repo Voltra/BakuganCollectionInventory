@@ -3,11 +3,29 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "optimize": "vite optimize",
+        "prebuild": "npm run optimize",
+        "predev": "npm run optimize",
+        "audit": "npm audit fix",
+        "postinstall": "npm run audit",
+        "postupdate": "npm run audit"
     },
     "devDependencies": {
+        "@tailwindcss/forms": "^0.5.9",
+        "@tailwindcss/typography": "^0.5.15",
+        "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
+        "cropperjs": "^1.6.2",
+        "fontaine": "^0.5.0",
         "laravel-vite-plugin": "^1.0",
+        "postcss": "^8.4.47",
+        "postcss-nesting": "^13.0.0",
+        "tailwindcss": "^3.4.13",
         "vite": "^5.0"
+    },
+    "dependencies": {
+        "@fontsource-variable/montserrat": "^5.1.0",
+        "@fontsource-variable/raleway": "^5.1.0"
     }
 }
