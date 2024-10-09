@@ -24,10 +24,10 @@ class FilamentTweaksServiceProvider extends ServiceProvider
     {
         Field::macro(
             'requiredIfNot',
-            fn(string $otherFieldPath): Field => /**
+            fn (string $otherFieldPath): Field => /**
              * @var Field $this
              */
-            $this->required(fn(Get $get) => !filled($get($otherFieldPath)))
+            $this->required(fn (Get $get) => ! filled($get($otherFieldPath)))
                 ->live(onBlur: true),
         );
     }
@@ -40,7 +40,7 @@ class FilamentTweaksServiceProvider extends ServiceProvider
         LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
             $switch->locales([
                 'en',
-                'fr'
+                'fr',
             ])
                 ->flags([
                     'en' => asset('vendor/blade-flags/country-us.svg'),
@@ -67,7 +67,7 @@ class FilamentTweaksServiceProvider extends ServiceProvider
             function (Repeater $repeater) {
                 $repeater
 //                    ->itemLabel(fn (Get $get) => $get('admin_title') ?? $get('title') ?? '')
-                    ->itemLabel(fn($state) => $state['admin_title'] ?? $state['title'] ?? '')
+                    ->itemLabel(fn ($state) => $state['admin_title'] ?? $state['title'] ?? '')
                     ->collapsible()
                     ->collapsed()
                     //->reorderableWithButtons()
@@ -78,7 +78,7 @@ class FilamentTweaksServiceProvider extends ServiceProvider
         Select::configureUsing(
             function (Select $select) {
                 $select
-                    ->default(fn($options) => $options[0] ?? null)
+                    ->default(fn ($options) => $options[0] ?? null)
                     ->native(false)
                     ->selectablePlaceholder(false);
             },

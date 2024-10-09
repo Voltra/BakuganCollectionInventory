@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Filament\FontProviders\Contracts\FontProvider;
@@ -8,9 +10,8 @@ use Illuminate\Support\HtmlString;
 
 class NoopFontProvider implements FontProvider
 {
-
-	public function getHtml(string $family, ?string $url = null): Htmlable
-	{
-		return new HtmlString('');
-	}
+    public function getHtml(string $family, ?string $url = null): Htmlable
+    {
+        return new HtmlString('');
+    }
 }

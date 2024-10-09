@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
             URL::forceRootUrl(env('APP_URL'));
         }
 
-        if (!Type::hasType('enum')) {
+        if (! Type::hasType('enum')) {
             Type::addType('enum', StringType::class);
         }
     }

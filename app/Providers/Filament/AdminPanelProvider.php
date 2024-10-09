@@ -24,7 +24,6 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Joaopaulolndev\FilamentWorldClock\FilamentWorldClockPlugin;
 use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
-use Spatie\Color\Hex;
 use Voltra\FilamentSvgAvatar\Filament\AvatarProviders\RawSvgAvatarProvider;
 use Voltra\FilamentSvgAvatar\FilamentSvgAvatarPlugin;
 
@@ -37,14 +36,14 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->brandName(env('APP_NAME'))
-            ->brandLogo(fn() => view('filament.admin.logo'))
+            ->brandLogo(fn () => view('filament.admin.logo'))
             ->brandLogoHeight('2rem')
             ->login()
             ->unsavedChangesAlerts()
             ->databaseTransactions()
             ->font('"Raleway Variable", Raleway, sans-serif', provider: NoopFontProvider::class)
             ->colors([
-                'primary' => Color::hex("#D71920"),
+                'primary' => Color::hex('#D71920'),
             ])
             ->darkMode(isForced: true)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
@@ -54,8 +53,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-//                Widgets\AccountWidget::class,
-//                Widgets\FilamentInfoWidget::class,
+                //                Widgets\AccountWidget::class,
+                //                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
