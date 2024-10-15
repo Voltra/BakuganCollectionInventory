@@ -79,6 +79,7 @@ class FilamentTweaksServiceProvider extends ServiceProvider
             function (Select $select) {
                 $select
                     ->default(fn ($options) => $options[0] ?? null)
+                    ->searchable()
                     ->native(false)
                     ->selectablePlaceholder(false);
             },
@@ -112,5 +113,10 @@ class FilamentTweaksServiceProvider extends ServiceProvider
                     ->acceptedFileTypes(['image/jpeg', 'image/png']);
             },
         );
+
+        Section::configureUsing(function (Section $section) {
+            $section->collapsible()
+                ->persistCollapsed();
+        });
     }
 }

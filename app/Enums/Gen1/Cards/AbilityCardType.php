@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Enums\Gen1\Cards;
 
+use App\Enums\Concerns\BackedEnum;
 use Filament\Support\Colors\Color;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
 enum AbilityCardType: string implements HasColor, HasLabel
 {
+    use BackedEnum;
+
     case RED = 'red';
     case GREEN = 'green';
     case BLUE = 'blue';
