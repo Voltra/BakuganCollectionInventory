@@ -19,27 +19,17 @@ enum BakuganAttribute: string implements HasIcon, HasLabel
 
     public function getLabel(): ?string
     {
-        return match ($this) {
-            self::ATTRIBUTELESS => 'Attributeless',
-            self::AQUOS => 'Aquos',
-            self::DARKUS => 'Darkus',
-            self::HAOS => 'Haos',
-            self::PYRUS => 'Pyrus',
-            self::SUBTERRA => 'Subterra',
-            self::VENTUS => 'Ventus',
-        };
+        return str($this->value)
+            ->after('_')
+            ->ucfirst()
+            ->toString();
     }
 
     public function getIcon(): ?string
     {
         return match ($this) {
             self::ATTRIBUTELESS => 'tabler-circle-dotted',
-            self::AQUOS => 'gen1-aquos',
-            self::DARKUS => 'gen1-darkus',
-            self::HAOS => 'gen1-haos',
-            self::PYRUS => 'gen1-pyrus',
-            self::SUBTERRA => 'gen1-subterra',
-            self::VENTUS => 'gen1-ventus',
+            default => str_replace('_', '-', $this->value),
         };
     }
 }

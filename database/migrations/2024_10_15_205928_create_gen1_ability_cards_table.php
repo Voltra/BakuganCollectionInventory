@@ -1,6 +1,8 @@
 <?php
 
 use App\Enums\Gen1\Cards\AbilityCardType;
+use App\Enums\Gen1\Cards\CardCondition;
+use App\Enums\Gen1\Cards\CardRarity;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,9 +19,11 @@ return new class extends Migration
             $table->id();
             $table->enum('type', AbilityCardType::allValues())->index();
             $table->foreignIdFor(Media::class)->constrained()->onDelete('cascade');
+            $table->enum('rarity', CardRarity::allValues())->default(CardRarity::COMMON)->index();
             $table->unsignedSmallInteger('power_level')->nullable();
             $table->string('english_name')->index();
             $table->string('french_name')->nullable()->index();
+            $table->enum('condition', CardCondition::allValues())->index();
             $table->unsignedInteger('pyrus_attribute_bonus')->nullable();
             $table->unsignedInteger('aquos_attribute_bonus')->nullable();
             $table->unsignedInteger('subterra_attribute_bonus')->nullable();
@@ -32,7 +36,7 @@ return new class extends Migration
             $table->longText('french_text')->nullable();
             $table->longText('observations')->default('');
             $table->string('reference')->index();
-            $table->string('series_reference');
+            $table->string('series_reference')->index();
             $table->timestamps();
         });
     }

@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
+use App\Enums\AdminGroup;
+use App\Filament\Pages\BackupsPage;
 use App\NoopFontProvider;
 use Awcodes\FilamentQuickCreate\QuickCreatePlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -24,6 +27,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Joaopaulolndev\FilamentWorldClock\FilamentWorldClockPlugin;
 use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
+use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
 use Voltra\FilamentSvgAvatar\Filament\AvatarProviders\RawSvgAvatarProvider;
 use Voltra\FilamentSvgAvatar\FilamentSvgAvatarPlugin;
 
@@ -51,6 +55,16 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
+            ->navigationGroups([
+                NavigationGroup::make(fn() => AdminGroup::GEN1->getLabel())
+                    ->collapsible(),
+                NavigationGroup::make(fn() => AdminGroup::GEN2->getLabel())
+                    ->collapsed(),
+                NavigationGroup::make(fn() => AdminGroup::GEN3->getLabel())
+                    ->collapsed(),
+                NavigationGroup::make(fn() => AdminGroup::META->getLabel())
+                    ->collapsed(),
+            ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 //                Widgets\AccountWidget::class,
@@ -76,7 +90,6 @@ class AdminPanelProvider extends PanelProvider
                 BreezyCore::make()
                     ->enableTwoFactorAuthentication()
                     ->myProfile(),
-                QuickCreatePlugin::make(),
                 FilamentWorldClockPlugin::make()
                     ->setQuantityPerRow(3)
                     ->setColumnSpan(2)
@@ -87,6 +100,12 @@ class AdminPanelProvider extends PanelProvider
                         'America/Los_Angeles',
                         'Asia/Tokyo',
                     ]),
+                QuickCreatePlugin::make()
+                    ->rounded(),
+                FilamentSpatieLaravelBackupPlugin::make()
+                    ->usingPolingInterval('10m')
+                    ->usingPage(BackupsPage::class)
+                    ->noTimeout(),
             ])
             ->defaultAvatarProvider(RawSvgAvatarProvider::class)
             ->viteTheme('resources/css/filament/admin/theme.css')

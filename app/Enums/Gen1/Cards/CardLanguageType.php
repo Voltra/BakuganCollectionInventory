@@ -8,6 +8,7 @@ use Filament\Support\Contracts\HasLabel;
 
 enum CardLanguageType: string implements HasLabel
 {
+    case EN_ONLY = 'en_only';
     case EN_FR = 'en_fr';
     case FULL_ART = 'fullart';
     case INTERNATIONAL_EN = 'international_en';
@@ -19,6 +20,7 @@ enum CardLanguageType: string implements HasLabel
     public function getLabel(): ?string
     {
         return match($this) {
+            self::EN_ONLY => 'EN',
             self::EN_FR => 'EN/FR',
             self::FULL_ART => 'Fullart',
             self::INTERNATIONAL_EN => 'International (EN, etc.)',
@@ -32,6 +34,7 @@ enum CardLanguageType: string implements HasLabel
     public function hasEnglishText(): bool
     {
         return in_array($this, [
+            self::EN_ONLY,
             self::EN_FR,
             self::INTERNATIONAL_EN,
             self::INTERNATIONAL_EN_FR,

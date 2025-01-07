@@ -1,7 +1,11 @@
-import preset from '../../../../vendor/filament/filament/tailwind.config.preset'
+import filamentPreset from '../../../../vendor/filament/filament/tailwind.config.preset'
 
+/**
+ * @type {import("tailwindcss").Config}
+ */
 export default {
-    presets: [preset],
+    presets: [filamentPreset],
+    darkMode: ['selector', '&:not(.light *)'],
     content: [
         './app/Filament/**/*.php',
         './resources/views/filament/**/*.blade.php',

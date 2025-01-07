@@ -6,38 +6,40 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "awcodes/filament-curator": "^3.6.9",
-        "awcodes/filament-quick-create": "^3.4.2",
+        "awcodes/filament-curator": "^3.6.15",
+        "awcodes/filament-quick-create": "^3.6.1",
         "bezhansalleh/filament-language-switch": "^3.1",
+        "codeat3/blade-game-icons": "^1.4",
         "doctrine/dbal": "^4.2.1",
-        "filament/filament": "^3.2.117",
+        "filament/filament": "^3.2.132",
         "jeffgreco13/filament-breezy": "^2.4.5",
         "joaopaulolndev/filament-world-clock": "^1.0.9",
-        "laravel/framework": "^11.28.0",
+        "laravel/framework": "^11.37.0",
+        "laravel/pail": "^1.2.1",
         "laravel/tinker": "^2.10",
         "mohamedsabil83/filament-forms-tinyeditor": "^2.3.3",
         "njxqlus/filament-progressbar": "^1.0.1",
         "ryangjchandler/blade-tabler-icons": "^2.3",
-        "shuvroroy/filament-spatie-laravel-backup": "^2.2.2",
+        "shuvroroy/filament-spatie-laravel-backup": "^2.2.3",
         "voltra/filament-svg-avatar": "^1.2.7"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.14.3",
-        "barryvdh/laravel-ide-helper": "^3.1",
-        "driftingly/rector-laravel": "^1.2.4",
-        "fakerphp/faker": "^1.23.1",
-        "larastan/larastan": "^2.9.8",
-        "laravel/pint": "^1.18.1",
-        "laravel/sail": "^1.36",
+        "barryvdh/laravel-debugbar": "^3.14.10",
+        "barryvdh/laravel-ide-helper": "^3.5.2",
+        "driftingly/rector-laravel": "^1.2.6",
+        "fakerphp/faker": "^1.24.1",
+        "larastan/larastan": "^2.9.12",
+        "laravel/pint": "^1.19.0",
+        "laravel/sail": "^1.39.1",
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.5",
-        "pestphp/pest": "^3.4.1",
+        "pestphp/pest": "^3.7.1",
         "pestphp/pest-plugin-laravel": "^3.0",
         "phpstan/extension-installer": "^1.4.3",
-        "phpstan/phpstan": "^1.12.6",
+        "phpstan/phpstan": "^1.12.15",
         "phpstan/phpstan-deprecation-rules": "^1.2.1",
-        "phpstan/phpstan-phpunit": "^1.4",
-        "rector/rector": "^1.2.7"
+        "phpstan/phpstan-phpunit": "^1.4.2",
+        "rector/rector": "^1.2.10"
     },
     "autoload": {
         "psr-4": {
@@ -76,6 +78,10 @@
         "refactor": [
             "@php ./vendor/bin/rector process",
             "@composer format"
+        ],
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

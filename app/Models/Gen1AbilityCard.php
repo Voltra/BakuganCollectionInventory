@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\Gen1\Cards\AbilityCardType;
+use App\Enums\Gen1\Cards\CardCondition;
+use App\Enums\Gen1\Cards\CardRarity;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,7 +20,9 @@ class Gen1AbilityCard extends Model
     protected function casts(): array
     {
         return array_merge(parent::casts(), [
-            'type' => Gen1AbilityCard::class,
+            'type' => AbilityCardType::class,
+            'rarity' => CardRarity::class,
+            'condition' => CardCondition::class,
         ]);
     }
 

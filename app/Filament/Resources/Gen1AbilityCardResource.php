@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace App\Filament\Resources;
 
 use App\Enums\Gen1\Cards\AbilityCardType;
+use App\Enums\Gen1\Cards\CardCondition;
+use App\Enums\Gen1\Cards\CardRarity;
 use App\Enums\Gen1\Toys\BakuganAttribute;
+use App\Filament\Pages\Concerns\Gen1Page;
 use App\Filament\Resources\Gen1AbilityCardResource\Pages;
 use App\Models\Gen1AbilityCard;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -18,9 +21,11 @@ use Filament\Tables\Table;
 
 class Gen1AbilityCardResource extends Resource
 {
+    use Gen1Page;
+
     protected static ?string $model = Gen1AbilityCard::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'gameicon-card-ace-diamonds';
 
     public static function form(Form $form): Form
     {
@@ -28,85 +33,148 @@ class Gen1AbilityCardResource extends Resource
             ->schema([
                 Forms\Components\Section::make('Admin')
                     ->schema([
-                        CuratorPicker::make('media_id')
-                            ->relationship('image', 'id'),
+                        Forms\Components\Group::make([
+                            CuratorPicker::make('media_id')
+                                ->label('Photo')
+                                ->relationship('image', 'id'),
+                            Forms\Components\Select::make('condition')
+                                ->required()
+                                ->placeholder('Near mint, etc.')
+                                ->options(CardCondition::class),
+                        ])->columns(2),
                         Forms\Components\Textarea::make('observations')
+                            ->placeholder('Stored in the ABC box...')
                             ->required(),
-                    ]),
-                Forms\Components\Select::make('type')
-                    ->required()
-                    ->options(AbilityCardType::class),
-                Forms\Components\TextInput::make('power_level')
-                    ->numeric(),
+                    ])->collapsed(false),
+                Forms\Components\Group::make([
+                    Forms\Components\Select::make('type')
+                        ->label('Color')
+                        ->placeholder('Red, green, blue, ...')
+                        ->columnSpan(1)
+                        ->required()
+                        ->options(AbilityCardType::class),
+                    Forms\Components\TextInput::make('power_level')
+                        ->placeholder('0')
+                        ->columnSpan(1)
+                        ->numeric(),
+                    Forms\Components\Select::make('rarity')
+                        ->columnSpan(1)
+                        ->required()
+                        ->options(CardRarity::class)
+                        ->default(CardRarity::COMMON),
+                ])->columns(3)
+                    ->columnSpanFull(),
                 Forms\Components\Group::make([
                     Forms\Components\TextInput::make('english_name')
+                        ->placeholder('Doom wind start')
+                        ->columnSpan(1)
                         ->required(),
-                    Forms\Components\TextInput::make('french_name'),
-                ]),
+                    Forms\Components\TextInput::make('french_name')
+                        ->placeholder('Commencement du vent maudit')
+                        ->columnSpan(1),
+                ])->columns()
+                    ->columnSpanFull(),
                 Forms\Components\Section::make('Attribute Bonuses')
                     ->collapsed()
+                    ->columns()
+                    ->extraAttributes(['class' => 'light'])
                     ->schema([
                         Forms\Components\TextInput::make('pyrus_attribute_bonus')
-                            ->prefixIcon(fn () => BakuganAttribute::PYRUS->getIcon())
+                            ->placeholder('0')
+                            ->columnSpan(1)
+                            ->prefixIcon(fn () => BakuganAttribute::PYRUS->getIcon(), isInline: true)
+                            ->suffix('G')
                             ->numeric()
+                            ->step(10)
                             ->multipleOf(10)
                             ->minValue(0),
                         Forms\Components\TextInput::make('aquos_attribute_bonus')
-                            ->prefixIcon(fn () => BakuganAttribute::AQUOS->getIcon())
+                            ->placeholder('0')
+                            ->columnSpan(1)
+                            ->prefixIcon(fn () => BakuganAttribute::AQUOS->getIcon(), isInline: true)
+                            ->suffix('G')
                             ->numeric()
+                            ->step(10)
                             ->multipleOf(10)
                             ->minValue(0),
                         Forms\Components\TextInput::make('subterra_attribute_bonus')
-                            ->prefixIcon(fn () => BakuganAttribute::SUBTERRA->getIcon())
+                            ->placeholder('0')
+                            ->columnSpan(1)
+                            ->prefixIcon(fn () => BakuganAttribute::SUBTERRA->getIcon(), isInline: true)
+                            ->suffix('G')
                             ->numeric()
+                            ->step(10)
                             ->multipleOf(10)
                             ->minValue(0),
                         Forms\Components\TextInput::make('haos_attribute_bonus')
-                            ->prefixIcon(fn () => BakuganAttribute::HAOS->getIcon())
+                            ->placeholder('0')
+                            ->columnSpan(1)
+                            ->prefixIcon(fn () => BakuganAttribute::HAOS->getIcon(), isInline: true)
+                            ->suffix('G')
                             ->numeric()
+                            ->step(10)
                             ->multipleOf(10)
                             ->minValue(0),
                         Forms\Components\TextInput::make('darkus_attribute_bonus')
-                            ->prefixIcon(fn () => BakuganAttribute::DARKUS->getIcon())
+                            ->placeholder('0')
+                            ->columnSpan(1)
+                            ->prefixIcon(fn () => BakuganAttribute::DARKUS->getIcon(), isInline: true)
+                            ->suffix('G')
                             ->numeric()
+                            ->step(10)
                             ->multipleOf(10)
                             ->minValue(0),
                         Forms\Components\TextInput::make('ventus_attribute_bonus')
-                            ->prefixIcon(fn () => BakuganAttribute::VENTUS->getIcon())
+                            ->placeholder('0')
+                            ->columnSpan(1)
+                            ->prefixIcon(fn () => BakuganAttribute::VENTUS->getIcon(), isInline: true)
+                            ->suffix('G')
                             ->numeric()
+                            ->step(10)
                             ->multipleOf(10)
                             ->minValue(0),
                     ]),
-                Forms\Components\Section::make('Original Effects')
-                    ->schema([
-                        Forms\Components\Textarea::make('original_text')
-                            ->required()
-                            ->columnSpan(1),
-                        Forms\Components\Textarea::make('original_french_text')
-                            ->columnSpan(1),
-                    ]),
-                Forms\Components\Section::make('Effects')
-                    ->schema([
-                        Forms\Components\Textarea::make('english_text')
-                            ->columnSpan(1),
-                        Forms\Components\Textarea::make('french_text')
-                            ->columnSpan(1),
-                    ]),
+                Forms\Components\Group::make([
+                    Forms\Components\Section::make('Original Effects')
+                        ->columnSpan(1)
+                        ->schema([
+                            Forms\Components\Textarea::make('original_text')
+                                ->placeholder('Play at the start of your first turn, if you have both Darkus and Ventus in your force: Take an extra turn after this one.')
+                                ->required(),
+                            Forms\Components\Textarea::make('original_french_text')
+                                ->placeholder('A jouer au début de ton premier tour, si tu as à la fois le Darkus et le Ventus en ta possession: Tu peux rejouer après celui-ci.'),
+                        ]),
+                    Forms\Components\Section::make('Effects')
+                        ->columnSpan(1)
+                        ->schema([
+                            Forms\Components\Textarea::make('english_text')
+                                ->placeholder('Play at the start of your first turn. If you have both a Darkus and a Ventus Bakugan in your deck: Take an extra turn after this one.'),
+                            Forms\Components\Textarea::make('french_text')
+                                ->placeholder('À jouer au début de ton premier tour. Si tu as à la fois un Bakugan Darkus et un Bakugan Ventus dans ton deck : Joue un tour supplémentaire après celui-ci.'),
+                        ]),
+                ])->columns()
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('reference')
+                    ->placeholder('BA1025-AB-SM-GBL')
                     ->required(),
                 Forms\Components\TextInput::make('series_reference')
+                    ->placeholder('25/48a')
                     ->required(),
             ]);
     }
 
+    /**
+     * @throws \Exception
+     */
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 CuratorColumn::make('media_id'),
                 Tables\Columns\TextColumn::make('type')
-                    ->badge()
-                    ->searchable(),
+                    ->badge(),
+                Tables\Columns\TextColumn::make('condition')
+                    ->badge(),
                 Tables\Columns\TextColumn::make('power_level')
                     ->numeric()
                     ->sortable(),
@@ -154,7 +222,10 @@ class Gen1AbilityCardResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('type')
+                    ->options(AbilityCardType::class),
+                Tables\Filters\SelectFilter::make('condition')
+                    ->options(CardCondition::class),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

@@ -12,6 +12,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Get;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Support\ServiceProvider;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
@@ -84,6 +85,13 @@ class FilamentTweaksServiceProvider extends ServiceProvider
                     ->selectablePlaceholder(false);
             },
         );
+
+        SelectFilter::configureUsing(function (SelectFilter $filter) {
+            $filter
+                ->searchable()
+                ->native(false)
+                ->selectablePlaceholder(false);
+        });
 
         /*RichEditor::configureUsing(
             function (RichEditor $richEditor) {

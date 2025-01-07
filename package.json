@@ -12,20 +12,20 @@
         "postupdate": "npm run audit"
     },
     "devDependencies": {
-        "@tailwindcss/forms": "^0.5.9",
-        "@tailwindcss/typography": "^0.5.15",
+        "@tailwindcss/forms": "^0.5.10",
+        "@tailwindcss/typography": "^0.5.16",
         "autoprefixer": "^10.4.20",
-        "axios": "^1.7.4",
+        "axios": "^1.7.9",
         "cropperjs": "^1.6.2",
         "fontaine": "^0.5.0",
-        "laravel-vite-plugin": "^1.0",
-        "postcss": "^8.4.47",
-        "postcss-nesting": "^13.0.0",
-        "tailwindcss": "^3.4.13",
-        "vite": "^5.0"
+        "laravel-vite-plugin": "^1.1.1",
+        "postcss": "^8.4.49",
+        "postcss-nesting": "^13.0.1",
+        "tailwindcss": "^3.4.17",
+        "vite": "^5.4.11"
     },
     "dependencies": {
-        "@fontsource-variable/montserrat": "^5.1.0",
-        "@fontsource-variable/raleway": "^5.1.0"
+        "@fontsource-variable/montserrat": "^5.1.1",
+        "@fontsource-variable/raleway": "^5.1.1"
     }
 }
