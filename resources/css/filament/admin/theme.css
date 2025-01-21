@@ -13,3 +13,10 @@
 .fi-fo-builder-item {
     overflow: visible!important;
 }
+
+.choices__list--single .choices__item,
+.dark\:text-white:not(label *, .fi-section-header-heading) {
+    &:is(.dark *):is(.light *) {
+        @apply text-black;
+    }
+}

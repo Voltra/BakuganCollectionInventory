@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 use Filament\Support\Contracts\HasLabel;
 
-enum AdminGroup: string implements HasLabel {
+enum AdminGroup: string implements HasLabel
+{
     case GEN1 = 'gen1';
     case GEN2 = 'gen2';
     case GEN3 = 'gen3';

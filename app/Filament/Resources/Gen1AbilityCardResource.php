@@ -31,33 +31,46 @@ class Gen1AbilityCardResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Admin')
+                Forms\Components\Section::make(__l('gen1/abilityCards.sections.meta'))
                     ->schema([
                         Forms\Components\Group::make([
-                            CuratorPicker::make('media_id')
-                                ->label('Photo')
-                                ->relationship('image', 'id'),
-                            Forms\Components\Select::make('condition')
-                                ->required()
-                                ->placeholder('Near mint, etc.')
-                                ->options(CardCondition::class),
+                            Forms\Components\Group::make([
+                                CuratorPicker::make('front_media_id')
+                                    ->label(__l('gen1/abilityCards.fields.front_media_id'))
+                                    ->required()
+                                    ->relationship('frontImage', 'id'),
+                                CuratorPicker::make('back_media_id')
+                                    ->label(__l('gen1/abilityCards.fields.back_media_id'))
+                                    ->nullable()
+                                    ->relationship('backImage', 'id'),
+                            ])->columns(1),
+                            Forms\Components\Group::make([
+                                Forms\Components\Select::make('condition')
+                                    ->label(__l('gen1/abilityCards.fields.condition'))
+                                    ->required()
+                                    ->placeholder(__l('gen1/abilityCards.placeholders.condition'))
+                                    ->options(CardCondition::class),
+                                Forms\Components\Textarea::make('observations')
+                                    ->label(__l('gen1/abilityCards.fields.observations'))
+                                    ->placeholder(__l('gen1/abilityCards.placeholders.observations'))
+                                    ->required(),
+                            ])->columns(1),
                         ])->columns(2),
-                        Forms\Components\Textarea::make('observations')
-                            ->placeholder('Stored in the ABC box...')
-                            ->required(),
                     ])->collapsed(false),
                 Forms\Components\Group::make([
                     Forms\Components\Select::make('type')
-                        ->label('Color')
-                        ->placeholder('Red, green, blue, ...')
+                        ->label(__l('gen1/abilityCards.fields.type'))
+                        ->placeholder(__l('gen1/abilityCards.placeholders.type'))
                         ->columnSpan(1)
                         ->required()
                         ->options(AbilityCardType::class),
                     Forms\Components\TextInput::make('power_level')
-                        ->placeholder('0')
+                        ->label(__l('gen1/abilityCards.fields.power_level'))
+                        ->placeholder(__l('gen1/abilityCards.placeholders.power_level'))
                         ->columnSpan(1)
                         ->numeric(),
                     Forms\Components\Select::make('rarity')
+                        ->label(__l('gen1/abilityCards.fields.rarity'))
                         ->columnSpan(1)
                         ->required()
                         ->options(CardRarity::class)
@@ -66,20 +79,23 @@ class Gen1AbilityCardResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\Group::make([
                     Forms\Components\TextInput::make('english_name')
-                        ->placeholder('Doom wind start')
+                        ->label(__l('gen1/abilityCards.fields.english_name'))
+                        ->placeholder(__l('gen1/abilityCards.placeholders.english_name'))
                         ->columnSpan(1)
                         ->required(),
                     Forms\Components\TextInput::make('french_name')
-                        ->placeholder('Commencement du vent maudit')
+                        ->label(__l('gen1/abilityCards.fields.french_name'))
+                        ->placeholder(__l('gen1/abilityCards.placeholders.french_name'))
                         ->columnSpan(1),
                 ])->columns()
                     ->columnSpanFull(),
-                Forms\Components\Section::make('Attribute Bonuses')
+                Forms\Components\Section::make(__l('gen1/abilityCards.sections.attribute_bonuses'))
                     ->collapsed()
-                    ->columns()
+                    ->columns(2)
                     ->extraAttributes(['class' => 'light'])
                     ->schema([
                         Forms\Components\TextInput::make('pyrus_attribute_bonus')
+                            ->label(__l('gen1/attributeBonus.pyrus'))
                             ->placeholder('0')
                             ->columnSpan(1)
                             ->prefixIcon(fn () => BakuganAttribute::PYRUS->getIcon(), isInline: true)
@@ -89,6 +105,7 @@ class Gen1AbilityCardResource extends Resource
                             ->multipleOf(10)
                             ->minValue(0),
                         Forms\Components\TextInput::make('aquos_attribute_bonus')
+                            ->label(__l('gen1/attributeBonus.aquos'))
                             ->placeholder('0')
                             ->columnSpan(1)
                             ->prefixIcon(fn () => BakuganAttribute::AQUOS->getIcon(), isInline: true)
@@ -98,6 +115,7 @@ class Gen1AbilityCardResource extends Resource
                             ->multipleOf(10)
                             ->minValue(0),
                         Forms\Components\TextInput::make('subterra_attribute_bonus')
+                            ->label(__l('gen1/attributeBonus.subterra'))
                             ->placeholder('0')
                             ->columnSpan(1)
                             ->prefixIcon(fn () => BakuganAttribute::SUBTERRA->getIcon(), isInline: true)
@@ -107,6 +125,7 @@ class Gen1AbilityCardResource extends Resource
                             ->multipleOf(10)
                             ->minValue(0),
                         Forms\Components\TextInput::make('haos_attribute_bonus')
+                            ->label(__l('gen1/attributeBonus.haos'))
                             ->placeholder('0')
                             ->columnSpan(1)
                             ->prefixIcon(fn () => BakuganAttribute::HAOS->getIcon(), isInline: true)
@@ -116,6 +135,7 @@ class Gen1AbilityCardResource extends Resource
                             ->multipleOf(10)
                             ->minValue(0),
                         Forms\Components\TextInput::make('darkus_attribute_bonus')
+                            ->label(__l('gen1/attributeBonus.darkus'))
                             ->placeholder('0')
                             ->columnSpan(1)
                             ->prefixIcon(fn () => BakuganAttribute::DARKUS->getIcon(), isInline: true)
@@ -125,6 +145,7 @@ class Gen1AbilityCardResource extends Resource
                             ->multipleOf(10)
                             ->minValue(0),
                         Forms\Components\TextInput::make('ventus_attribute_bonus')
+                            ->label(__l('gen1/attributeBonus.ventus'))
                             ->placeholder('0')
                             ->columnSpan(1)
                             ->prefixIcon(fn () => BakuganAttribute::VENTUS->getIcon(), isInline: true)
@@ -135,29 +156,37 @@ class Gen1AbilityCardResource extends Resource
                             ->minValue(0),
                     ]),
                 Forms\Components\Group::make([
-                    Forms\Components\Section::make('Original Effects')
+                    Forms\Components\Section::make(__l('gen1/abilityCards.sections.original_effects'))
                         ->columnSpan(1)
                         ->schema([
                             Forms\Components\Textarea::make('original_text')
-                                ->placeholder('Play at the start of your first turn, if you have both Darkus and Ventus in your force: Take an extra turn after this one.')
+                                ->label(__l('gen1/abilityCards.fields.original_text'))
+                                ->placeholder(__l('gen1/abilityCards.placeholders.original_text'))
                                 ->required(),
                             Forms\Components\Textarea::make('original_french_text')
-                                ->placeholder('A jouer au début de ton premier tour, si tu as à la fois le Darkus et le Ventus en ta possession: Tu peux rejouer après celui-ci.'),
+                                ->label(__l('gen1/abilityCards.fields.original_french_text'))
+                                ->placeholder(__l('gen1/abilityCards.placeholders.original_french_text')),
                         ]),
-                    Forms\Components\Section::make('Effects')
+                    Forms\Components\Section::make(__l('gen1/abilityCards.sections.effects'))
                         ->columnSpan(1)
                         ->schema([
                             Forms\Components\Textarea::make('english_text')
-                                ->placeholder('Play at the start of your first turn. If you have both a Darkus and a Ventus Bakugan in your deck: Take an extra turn after this one.'),
+                                ->label(__l('gen1/abilityCards.fields.english_text'))
+                                ->placeholder(__l('gen1/abilityCards.placeholders.english_text')),
                             Forms\Components\Textarea::make('french_text')
-                                ->placeholder('À jouer au début de ton premier tour. Si tu as à la fois un Bakugan Darkus et un Bakugan Ventus dans ton deck : Joue un tour supplémentaire après celui-ci.'),
+                                ->label(__l('gen1/abilityCards.fields.french_text'))
+                                ->placeholder(__l('gen1/abilityCards.placeholders.french_text')),
                         ]),
                 ])->columns()
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('reference')
+                    ->label(__l('gen1/abilityCards.fields.reference'))
+                    ->helperText(__l('gen1/abilityCards.help.reference'))
                     ->placeholder('BA1025-AB-SM-GBL')
                     ->required(),
                 Forms\Components\TextInput::make('series_reference')
+                    ->label(__l('gen1/abilityCards.fields.series_reference'))
+                    ->helperText(__l('gen1/abilityCards.help.series_reference'))
                     ->placeholder('25/48a')
                     ->required(),
             ]);
@@ -170,7 +199,7 @@ class Gen1AbilityCardResource extends Resource
     {
         return $table
             ->columns([
-                CuratorColumn::make('media_id'),
+                CuratorColumn::make('front_media_id'),
                 Tables\Columns\TextColumn::make('type')
                     ->badge(),
                 Tables\Columns\TextColumn::make('condition')

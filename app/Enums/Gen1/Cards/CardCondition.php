@@ -9,7 +9,7 @@ use Filament\Support\Colors\Color;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum CardCondition: string implements HasLabel, HasColor
+enum CardCondition: string implements HasColor, HasLabel
 {
     use BackedEnum;
 
@@ -32,7 +32,7 @@ enum CardCondition: string implements HasLabel, HasColor
 
     public function getColor(): string|array|null
     {
-        return match($this) {
+        return match ($this) {
             self::MINT => Color::hex('#00dc00'),
             self::NEAR_MINT => Color::hex('#00d500'),
             self::EXCELLENT => Color::hex('#78cb00'),

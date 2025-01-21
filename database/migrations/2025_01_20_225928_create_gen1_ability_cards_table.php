@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\Gen1\Cards\AbilityCardType;
 use App\Enums\Gen1\Cards\CardCondition;
 use App\Enums\Gen1\Cards\CardRarity;
+use App\Enums\Gen1\Toys\BakuganAttribute;
 use Awcodes\Curator\Models\Media;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,7 +21,8 @@ return new class extends Migration
         Schema::create('gen1_ability_cards', function (Blueprint $table) {
             $table->id();
             $table->enum('type', AbilityCardType::allValues())->index();
-            $table->foreignIdFor(Media::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Media::class, 'front_media_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Media::class, 'back_media_id')->nullable()->constrained()->onDelete('cascade');
             $table->enum('rarity', CardRarity::allValues())->default(CardRarity::COMMON)->index();
             $table->unsignedSmallInteger('power_level')->nullable();
             $table->string('english_name')->index();

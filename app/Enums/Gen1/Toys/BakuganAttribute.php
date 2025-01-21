@@ -17,6 +17,15 @@ enum BakuganAttribute: string implements HasIcon, HasLabel
     case SUBTERRA = 'gen1_subterra';
     case VENTUS = 'gen1_ventus';
 
+    public const GATE_ATTRIBUTES = [
+        self::AQUOS->value,
+        self::DARKUS->value,
+        self::HAOS->value,
+        self::PYRUS->value,
+        self::SUBTERRA->value,
+        self::VENTUS->value,
+    ];
+
     public function getLabel(): ?string
     {
         return str($this->value)

@@ -1,0 +1,43 @@
+<?php
+
+return [
+    'sections' => [
+        'meta' => 'Admin',
+        'attribute_bonuses' => 'Attribute Bonuses',
+        'original_effects' => 'Effects on the card',
+        'effects' => 'Problem Solving Card Text',
+    ],
+    'fields' => [
+        'front_media_id' => 'Front photo',
+        'back_media_id' => 'Back photo',
+        'condition' => 'Condition',
+        'observations' => 'Observations',
+        'type' => 'Color',
+        'power_level' => 'Power Level',
+        'rarity' => 'Rarity',
+        'english_name' => 'English Name',
+        'french_name' => 'Foreign Name',
+        'original_text' => 'English Text',
+        'original_french_text' => 'Foreign Text',
+        'english_text' => 'English Text',
+        'french_text' => 'Foreign Text',
+        'reference' => 'Reference',
+        'series_reference' => 'Series\' Reference',
+    ],
+    'placeholders' => [
+        'condition' => 'Near mint, etc.',
+        'observations' => 'Stored in the ABC box...',
+        'type' => 'Red, green, blue, ...',
+        'power_level' => '0',
+        'english_name' => 'Doom wind start',
+        'french_name' => 'Commencement du vent maudit',
+        'original_text' => 'Play at the start of your first turn, if you have both Darkus and Ventus in your force: Take an extra turn after this one.',
+        'original_french_text' => 'A jouer au début de ton premier tour, si tu as à la fois le Darkus et le Ventus en ta possession: Tu peux rejouer après celui-ci.',
+        'english_text' => 'Play at the start of your first turn. If you have both a Darkus and a Ventus Bakugan in your deck: Take an extra turn after this one (this does not affect turn order).',
+        'french_text' => 'À jouer au début de ton premier tour. Si tu as à la fois un Bakugan Darkus et un Bakugan Ventus dans ton deck : Joue un tour supplémentaire après celui-ci (cela ne change pas l\'ordre des tours).',
+    ],
+    'help' => [
+        'reference' => 'Located at the bottom left of the card',
+        'series_reference' => 'Located at the bottom right of the card',
+    ]
+];

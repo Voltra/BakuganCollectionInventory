@@ -19,7 +19,7 @@ enum CardLanguageType: string implements HasLabel
 
     public function getLabel(): ?string
     {
-        return match($this) {
+        return match ($this) {
             self::EN_ONLY => 'EN',
             self::EN_FR => 'EN/FR',
             self::FULL_ART => 'Fullart',

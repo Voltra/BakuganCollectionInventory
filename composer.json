@@ -12,6 +12,7 @@
         "codeat3/blade-game-icons": "^1.4",
         "doctrine/dbal": "^4.2.1",
         "filament/filament": "^3.2.132",
+        "guava/filament-icon-picker": "^2.0",
         "jeffgreco13/filament-breezy": "^2.4.5",
         "joaopaulolndev/filament-world-clock": "^1.0.9",
         "laravel/framework": "^11.37.0",
@@ -19,7 +20,7 @@
         "laravel/tinker": "^2.10",
         "mohamedsabil83/filament-forms-tinyeditor": "^2.3.3",
         "njxqlus/filament-progressbar": "^1.0.1",
-        "ryangjchandler/blade-tabler-icons": "^2.3",
+        "secondnetwork/blade-tabler-icons": "^3.26",
         "shuvroroy/filament-spatie-laravel-backup": "^2.2.3",
         "voltra/filament-svg-avatar": "^1.2.7"
     },
@@ -51,7 +52,8 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": ["app/functions.php"]
     },
     "scripts": {
         "app:meta": [

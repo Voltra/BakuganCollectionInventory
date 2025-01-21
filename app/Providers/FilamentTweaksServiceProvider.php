@@ -13,6 +13,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Get;
 use Filament\Tables\Filters\SelectFilter;
+use Guava\FilamentIconPicker\Forms\IconPicker;
 use Illuminate\Support\ServiceProvider;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
@@ -53,7 +54,7 @@ class FilamentTweaksServiceProvider extends ServiceProvider
         TinyEditor::configureUsing(
             function (TinyEditor $editor) {
                 $editor->profile('simple')
-                    ->minHeight(300 /*px*/);
+                    ->minHeight(300 /* px */);
             },
         );
 
@@ -71,13 +72,17 @@ class FilamentTweaksServiceProvider extends ServiceProvider
                     ->itemLabel(fn ($state) => $state['admin_title'] ?? $state['title'] ?? '')
                     ->collapsible()
                     ->collapsed()
-                    //->reorderableWithButtons()
+                    // ->reorderableWithButtons()
                     ->reorderableWithDragAndDrop();
             },
         );
 
         Select::configureUsing(
             function (Select $select) {
+                if ($select instanceof IconPicker) {
+                    return;
+                }
+
                 $select
                     ->default(fn ($options) => $options[0] ?? null)
                     ->searchable()

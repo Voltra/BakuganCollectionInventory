@@ -7,6 +7,7 @@ namespace App\Providers\Filament;
 use App\Enums\AdminGroup;
 use App\Filament\Pages\BackupsPage;
 use App\NoopFontProvider;
+use Awcodes\Curator\CuratorPlugin;
 use Awcodes\FilamentQuickCreate\QuickCreatePlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -56,13 +57,13 @@ class AdminPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
             ->navigationGroups([
-                NavigationGroup::make(fn() => AdminGroup::GEN1->getLabel())
+                NavigationGroup::make(fn () => AdminGroup::GEN1->getLabel())
                     ->collapsible(),
-                NavigationGroup::make(fn() => AdminGroup::GEN2->getLabel())
+                NavigationGroup::make(fn () => AdminGroup::GEN2->getLabel())
                     ->collapsed(),
-                NavigationGroup::make(fn() => AdminGroup::GEN3->getLabel())
+                NavigationGroup::make(fn () => AdminGroup::GEN3->getLabel())
                     ->collapsed(),
-                NavigationGroup::make(fn() => AdminGroup::META->getLabel())
+                NavigationGroup::make(fn () => AdminGroup::META->getLabel())
                     ->collapsed(),
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
@@ -100,6 +101,8 @@ class AdminPanelProvider extends PanelProvider
                         'America/Los_Angeles',
                         'Asia/Tokyo',
                     ]),
+                CuratorPlugin::make()
+                    ->defaultListView('grid'),
                 QuickCreatePlugin::make()
                     ->rounded(),
                 FilamentSpatieLaravelBackupPlugin::make()

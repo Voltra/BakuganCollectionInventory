@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Pages\Concerns;
 
 use App\Enums\AdminGroup;
 
-trait MetaPage {
+trait MetaPage
+{
     public static function getNavigationGroup(): ?string
     {
         return AdminGroup::META->getLabel();
