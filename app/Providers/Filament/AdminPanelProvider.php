@@ -102,6 +102,7 @@ class AdminPanelProvider extends PanelProvider
                         'Asia/Tokyo',
                     ]),
                 CuratorPlugin::make()
+                    ->navigationGroup(fn () => AdminGroup::META->getLabel())
                     ->defaultListView('grid'),
                 QuickCreatePlugin::make()
                     ->rounded(),

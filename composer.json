@@ -22,7 +22,8 @@
         "njxqlus/filament-progressbar": "^1.0.1",
         "secondnetwork/blade-tabler-icons": "^3.26",
         "shuvroroy/filament-spatie-laravel-backup": "^2.2.3",
-        "voltra/filament-svg-avatar": "^1.2.7"
+        "voltra/filament-svg-avatar": "^1.2.7",
+        "ext-zip": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.14.10",

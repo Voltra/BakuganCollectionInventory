@@ -1,7 +1,9 @@
 /dist/
 /export/
 /storage/backup/
+/storage/backups/
 /storage/export/
+/storage/app/backup-temp/
 /public/sitemap.xml
 /public/css/
 /public/js/

@@ -19,11 +19,7 @@ enum AbilityCardType: string implements HasColor, HasLabel
 
     public function getLabel(): ?string
     {
-        return match ($this) {
-            self::RED => 'Red',
-            self::GREEN => 'Green',
-            self::BLUE => 'Blue',
-        };
+        return __("gen1/abilityCardTypes.{$this->value}");
     }
 
     public function getColor(): string|array|null
