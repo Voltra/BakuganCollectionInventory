@@ -16,7 +16,7 @@ return [
      |
      */
 
-    'enabled' => env('DEBUGBAR_ENABLED', false),
+    'enabled' => env('DEBUGBAR_ENABLED', null),
     'hide_empty_tabs' => false, // Hide tabs until they have content
     'except' => [
         'telescope*',
@@ -162,20 +162,20 @@ return [
      */
 
     'collectors' => [
-        'phpinfo' => true,  // Php version
+        'phpinfo' => false,  // Php version
         'messages' => true,  // Messages
         'time' => true,  // Time Datalogger
         'memory' => true,  // Memory usage
         'exceptions' => true,  // Exception displayer
         'log' => true,  // Logs from Monolog (merged in messages if enabled)
         'db' => true,  // Show database (PDO) queries and bindings
-        'views' => true,  // Views with their data
+        'views' => false,  // Views with their data
         'route' => true,  // Current route information
         'auth' => false, // Display Laravel authentication status
         'gate' => true,  // Display Laravel Gate checks
         'session' => true,  // Display session data
         'symfony_request' => true,  // Only one can be enabled..
-        'mail' => true,  // Catch mail messages
+        'mail' => false,  // Catch mail messages
         'laravel' => false, // Laravel version and environment
         'events' => false, // All events fired
         'default_request' => false, // Regular or special Symfony request logger
@@ -233,18 +233,18 @@ return [
             'soft_limit' => 100,      // After the soft limit, no parameters/backtrace are captured
             'hard_limit' => 500,      // After the hard limit, queries are ignored
         ],
-        'mail' => false /*[
+        'mail' => [
             'timeline' => false,  // Add mails to the timeline
             'show_body' => true,
-        ]*/,
-        'views' => false /*[
+        ],
+        'views' => [
             'timeline' => false,    // Add the views to the timeline (Experimental)
             'data' => false,        // True for all data, 'keys' for only names, false for no parameters.
-            'group' => 50,          // Group duplicate views. Pass value to auto-group, or true/false to force
+            'group' => true/* 50 */,          // Group duplicate views. Pass value to auto-group, or true/false to force
             'exclude_paths' => [    // Add the paths which you don't want to appear in the views
                 'vendor/filament',   // Exclude Filament components by default
             ],
-        ]*/,
+        ],
         'route' => [
             'label' => true,  // Show complete route on bar
         ],
@@ -257,9 +257,9 @@ return [
         'events' => [
             'data' => false, // Collect events data, listeners
         ],
-        'logs' => false/*[
+        'logs' => [
             'file' => null,
-        ]*/,
+        ],
         'cache' => [
             'values' => true, // Collect cache values
         ],
