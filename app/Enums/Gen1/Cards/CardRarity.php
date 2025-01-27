@@ -30,23 +30,11 @@ enum CardRarity: string implements HasDescription, HasLabel
 
     public function getLabel(): ?string
     {
-        return str($this->value)
-            ->replace('_', ' ')
-            ->ucfirst()
-            ->toString();
+        return __("gen1/cardRarities.labels.{$this->value}");
     }
 
     public function getDescription(): ?string
     {
-        return match ($this) {
-            self::COMMON => 'The default rarity. Nothing special about it.',
-            self::FOIL => 'The title and parts of the cards are in a silver foil.',
-            self::BRONZE_ATTACK => 'The rarity of cards that came in Bronze Attack packs. The character silhouette on the cards is in a gold foil.',
-            self::HOLO_3D => 'Holographic 3D cards. The art appears 3D or to "move" when you move the card from left to right (and vice versa).',
-            self::CONFETTI => 'The entire card is covered in red, green and blue foil spots that look like confetti',
-            self::FULL_PRISMATIC => 'The entire card is covered in red, green and blue foil spots that look like tiny prisms',
-            self::BORDER_PRISMATIC => 'Only the card\'s border is covered in red, green and blue foil spots that look like tiny prisms',
-            self::ART_PRISMATIC => 'Only the card\'s art is covered in red, green and blue foil spots that look like tiny prisms',
-        };
+        return __("gen1/cardRarities.descriptions.{$this->value}");
     }
 }

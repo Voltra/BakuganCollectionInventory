@@ -79,8 +79,11 @@ return [
              * For a complete list of available customization options, see https://github.com/spatie/db-dumper
              */
             'databases' => [
-//                'mysql',
-                'sqlite',
+                env('APP_BACKUP_DB', env('DB_CONNECTION', 'sqlite')) => [
+                    'dump' => [
+                        'useSingleTransaction' => true,
+                    ]
+                ],
             ],
         ],
 
@@ -258,7 +261,7 @@ return [
     'monitor_backups' => [
         [
             'name' => env('APP_NAME', 'laravel-backup'),
-            'disks' => ['local'],
+            'disks' => ['backup'],
             'health_checks' => [
                 \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumAgeInDays::class => 1,
                 \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumStorageInMegabytes::class => 5000,

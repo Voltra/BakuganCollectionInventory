@@ -24,10 +24,7 @@ enum CardCondition: string implements HasColor, HasLabel
 
     public function getLabel(): ?string
     {
-        return str($this->value)
-            ->replace('_', ' ')
-            ->ucfirst()
-            ->toString();
+        return __("gen1/cardConditions.{$this->value}");
     }
 
     public function getColor(): string|array|null

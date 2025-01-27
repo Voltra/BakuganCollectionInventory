@@ -15,6 +15,7 @@ enum ReferenceCardType: string implements HasColor, HasLabel
     case MOBILE_ASSAULT = 'mobile_assault';
     case BATTLE_SUIT = 'battle_suit';
     case SKY_RAIDER = 'sky_raider';
+    case BAKU_BLASTER = 'baku_blaster';
 
     public function getLabel(): ?string
     {
@@ -23,7 +24,8 @@ enum ReferenceCardType: string implements HasColor, HasLabel
             self::EVO => 'Bakugan Evolution',
             self::MOBILE_ASSAULT => 'Mobile Assault Vehicule',
             self::BATTLE_SUIT => 'Battle Suit',
-            self::SKY_RAIDER => 'Sky Raider',
+            self::SKY_RAIDER => 'Baku Sky Raider',
+            self::BAKU_BLASTER => 'BakuBlaster',
         };
     }
 

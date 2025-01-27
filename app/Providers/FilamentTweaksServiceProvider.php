@@ -26,11 +26,13 @@ class FilamentTweaksServiceProvider extends ServiceProvider
     {
         Field::macro(
             'requiredIfNot',
-            fn (string $otherFieldPath): Field => /**
-             * @var Field $this
-             */
-            $this->required(fn (Get $get) => ! filled($get($otherFieldPath)))
-                ->live(onBlur: true),
+            function (string $otherFieldPath): Field {
+                /**
+                 * @var Field $this
+                 */
+                return $this->required(fn (Get $get) => ! filled($get($otherFieldPath)))
+                    ->live(onBlur: true);
+            },
         );
     }
 

@@ -1,7 +1,9 @@
 <?php
 
+use App\Enums\Gen1\Cards\AbilityCardType;
+
 return [
-    'red' => 'Red',
-    'green' => 'Green',
-    'blue' => 'Blue',
+    AbilityCardType::RED->value => 'Red',
+    AbilityCardType::GREEN->value => 'Green',
+    AbilityCardType::BLUE->value => 'Blue',
 ];

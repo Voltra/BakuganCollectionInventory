@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources;
 
+use App\Enums\AdminGroup;
 use App\Enums\Gen1\Cards\AbilityCardType;
 use App\Enums\Gen1\Cards\CardCondition;
 use App\Enums\Gen1\Cards\CardRarity;
@@ -15,7 +16,6 @@ use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
@@ -27,6 +27,23 @@ class Gen1AbilityCardResource extends Resource
 
     protected static ?string $navigationIcon = 'gameicon-card-ace-diamonds';
 
+    protected static ?string $recordTitleAttribute = 'english_name';
+
+    protected static bool $hasTitleCaseModelLabel = true;
+
+    #[\Override]
+    public static function getAdminGroup(): AdminGroup
+    {
+        return AdminGroup::GEN1;
+    }
+
+    #[\Override]
+    public static function getTranslationKey(): string
+    {
+        return 'abilityCards';
+    }
+
+    #[\Override]
     public static function form(Form $form): Form
     {
         return $form
@@ -195,65 +212,84 @@ class Gen1AbilityCardResource extends Resource
     /**
      * @throws \Exception
      */
+    #[\Override]
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                CuratorColumn::make('front_media_id'),
+                CuratorColumn::make('front_media_id')
+                    ->label(__l('gen1/abilityCards.fields.front_media_id')),
                 Tables\Columns\TextColumn::make('type')
+                    ->label(__l('gen1/abilityCards.fields.type'))
                     ->badge(),
                 Tables\Columns\TextColumn::make('condition')
+                    ->label(__l('gen1/abilityCards.fields.condition'))
                     ->badge(),
                 Tables\Columns\TextColumn::make('power_level')
+                    ->label(__l('gen1/abilityCards.fields.power_level'))
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('english_name')
+                    ->label(__l('gen1/abilityCards.fields.english_name'))
                     ->searchable()
                     ->description(fn (Gen1AbilityCard $card) => $card->english_text),
                 Tables\Columns\TextColumn::make('french_name')
+                    ->label(__l('gen1/abilityCards.fields.french_name'))
                     ->searchable()
                     ->description(fn (Gen1AbilityCard $card) => $card->french_text),
                 Tables\Columns\TextColumn::make('pyrus_attribute_bonus')
+                    ->label(__l('gen1/abilityCards.fields.pyrus_attribute_bonus'))
                     ->numeric()
                     ->icon(BakuganAttribute::PYRUS->getIcon())
                     ->sortable(),
                 Tables\Columns\TextColumn::make('aquos_attribute_bonus')
+                    ->label(__l('gen1/abilityCards.fields.aquos_attribute_bonus'))
                     ->numeric()
                     ->icon(BakuganAttribute::AQUOS->getIcon())
                     ->sortable(),
                 Tables\Columns\TextColumn::make('subterra_attribute_bonus')
+                    ->label(__l('gen1/abilityCards.fields.subterra_attribute_bonus'))
                     ->numeric()
                     ->icon(BakuganAttribute::SUBTERRA->getIcon())
                     ->sortable(),
                 Tables\Columns\TextColumn::make('haos_attribute_bonus')
+                    ->label(__l('gen1/abilityCards.fields.haos_attribute_bonus'))
                     ->numeric()
                     ->icon(BakuganAttribute::HAOS->getIcon())
                     ->sortable(),
                 Tables\Columns\TextColumn::make('darkus_attribute_bonus')
+                    ->label(__l('gen1/abilityCards.fields.darkus_attribute_bonus'))
                     ->numeric()
                     ->icon(BakuganAttribute::DARKUS->getIcon())
                     ->sortable(),
                 Tables\Columns\TextColumn::make('ventus_attribute_bonus')
+                    ->label(__l('gen1/abilityCards.fields.ventus_attribute_bonus'))
                     ->numeric()
                     ->icon(BakuganAttribute::VENTUS->getIcon())
                     ->sortable(),
                 Tables\Columns\TextColumn::make('reference')
+                    ->label(__l('gen1/abilityCards.fields.reference'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('series_reference')
+                    ->label(__l('gen1/abilityCards.fields.series_reference'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__l('gen1/abilityCards.fields.created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__l('gen1/abilityCards.fields.updated_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('type')
+                    ->label(__l('gen1/abilityCards.fields.type'))
                     ->options(AbilityCardType::class),
                 Tables\Filters\SelectFilter::make('condition')
+                    ->label(__l('gen1/abilityCards.fields.condition'))
                     ->options(CardCondition::class),
             ])
             ->actions([
@@ -267,6 +303,7 @@ class Gen1AbilityCardResource extends Resource
             ]);
     }
 
+    #[\Override]
     public static function getRelations(): array
     {
         return [
@@ -274,6 +311,7 @@ class Gen1AbilityCardResource extends Resource
         ];
     }
 
+    #[\Override]
     public static function getPages(): array
     {
         return [

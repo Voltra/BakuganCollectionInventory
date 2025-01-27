@@ -5,7 +5,11 @@ return [
         'meta' => 'Admin',
         'attribute_bonuses' => 'Attribute Bonuses',
         'original_effects' => 'Effects on the card',
-        'effects' => 'Problem Solving Card Text',
+        'effects' => 'Reworded effects',
+    ],
+    'titles' => [
+        'singular' => 'an ability card',
+        'plural' => 'Ability Cards',
     ],
     'fields' => [
         'front_media_id' => 'Front photo',

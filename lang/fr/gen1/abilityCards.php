@@ -1,0 +1,47 @@
+<?php
+
+return [
+    'sections' => [
+        'meta' => 'Informations',
+        'attribute_bonuses' => 'Bonus d\'attributs',
+        'original_effects' => 'Effet(s) sur la carte',
+        'effects' => 'Effet(s) corrigés',
+    ],
+    'titles' => [
+        'singular' => 'une carte capacité',
+        'plural' => 'Cartes capacité',
+    ],
+    'fields' => [
+        'front_media_id' => 'Recto',
+        'back_media_id' => 'Verso',
+        'condition' => 'État',
+        'observations' => 'Observations',
+        'type' => 'Couleur',
+        'power_level' => 'Niveau de Puissance',
+        'rarity' => 'Rareté',
+        'english_name' => 'Nom Anglais',
+        'french_name' => 'Nom Français',
+        'original_text' => 'Texte Anglais',
+        'original_french_text' => 'Texte Français',
+        'english_text' => 'Texte Anglais',
+        'french_text' => 'Texte Français',
+        'reference' => 'Référence',
+        'series_reference' => 'Référence dans le set',
+    ],
+    'placeholders' => [
+        'condition' => 'Comme neuf, etc.',
+        'observations' => 'Rangée dans la boîte ABC...',
+        'type' => 'Rouge, verte, bleue, ...',
+        'power_level' => '0',
+        'english_name' => 'Doom wind start',
+        'french_name' => 'Commencement du vent maudit',
+        'original_text' => 'Play at the start of your first turn, if you have both Darkus and Ventus in your force: Take an extra turn after this one.',
+        'original_french_text' => 'A jouer au début de ton premier tour, si tu as à la fois le Darkus et le Ventus en ta possession: Tu peux rejouer après celui-ci.',
+        'english_text' => 'Play at the start of your first turn. If you have both a Darkus and a Ventus Bakugan in your deck: Take an extra turn after this one (this does not affect turn order).',
+        'french_text' => 'À jouer au début de ton premier tour. Si tu as à la fois un Bakugan Darkus et un Bakugan Ventus dans ton deck : Joue un tour supplémentaire après celui-ci (cela ne change pas l\'ordre des tours).',
+    ],
+    'help' => [
+        'reference' => 'Situé tout en bas à gauche de la carte',
+        'series_reference' => 'Situé tout en bas à droite de la carte',
+    ]
+];

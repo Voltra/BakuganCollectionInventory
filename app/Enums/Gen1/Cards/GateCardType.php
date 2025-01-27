@@ -15,11 +15,7 @@ enum GateCardType: string implements HasIcon, HasLabel
 
     public function getLabel(): ?string
     {
-        return match ($this) {
-            self::GOLD => 'Gold',
-            self::SILVER => 'Silver',
-            self::COPPER => 'Copper',
-        };
+        return __("gen1/gateCardTypes.{$this->value}");
     }
 
     public function getIcon(): ?string
