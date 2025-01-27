@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use Barryvdh\Debugbar\ServiceProvider as DebugerBarServiceProvider;
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class DebugServiceProvider extends ServiceProvider
@@ -13,9 +15,9 @@ class DebugServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        if ($this->app->isLocal() /* && $this->app->hasDebugModeEnabled() */) {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-            //            $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
+        if ($this->app->isLocal() && $this->app->hasDebugModeEnabled()) {
+            $this->app->register(IdeHelperServiceProvider::class);
+            $this->app->register(DebugerBarServiceProvider::class);
         }
     }
 
