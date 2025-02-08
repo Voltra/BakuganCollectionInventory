@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Enums\Gen1\Cards\AbilityCardType;
 use App\Enums\Gen1\Cards\CardCondition;
 use App\Enums\Gen1\Cards\CardLanguageType;
-use App\Enums\Gen1\Cards\CardRarity;
+use App\Enums\Gen1\Cards\ReferenceCardType;
+use App\Enums\Gen1\Toys\SupportAttribute;
 use App\Models\Concerns\WithCardImages;
+use App\Models\Contracts\Gen1ReferenceCard;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @mixin IdeHelperGen1AbilityCard
+ * @mixin IdeHelperGen1BattleGearReferenceCard
  */
-class Gen1AbilityCard extends Model
+class Gen1BattleGearReferenceCard extends Model implements Gen1ReferenceCard
 {
     use WithCardImages;
 
@@ -24,13 +25,19 @@ class Gen1AbilityCard extends Model
     ];
 
     #[\Override]
+    public static function getReferenceCardType(): ReferenceCardType
+    {
+        return ReferenceCardType::BATTLE_GEAR;
+    }
+
+    #[\Override]
     protected function casts(): array
     {
         return array_merge(parent::casts(), [
-            'type' => AbilityCardType::class,
-            'rarity' => CardRarity::class,
             'condition' => CardCondition::class,
             'language_type' => CardLanguageType::class,
+            'left_attribute' => SupportAttribute::class,
+            'right_attribute' => SupportAttribute::class,
         ]);
     }
 }

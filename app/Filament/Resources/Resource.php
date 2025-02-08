@@ -8,16 +8,18 @@ use App\Enums\AdminGroup;
 
 abstract class Resource extends \Filament\Resources\Resource
 {
-    abstract public static function getTranslationKey(): string;
+    protected static bool $hasTitleCaseModelLabel = true;
 
     abstract public static function getAdminGroup(): AdminGroup;
+
+    abstract public static function getTranslationKey(): string;
 
     #[\Override]
     public static function getModelLabel(): string
     {
         $key = static::getTranslationKey();
 
-        return __("gen1/{$key}.titles.singular");
+        return __("{$key}.titles.singular");
     }
 
     #[\Override]
@@ -25,7 +27,7 @@ abstract class Resource extends \Filament\Resources\Resource
     {
         $key = static::getTranslationKey();
 
-        return __("gen1/{$key}.titles.plural");
+        return __("{$key}.titles.plural");
     }
 
     #[\Override]

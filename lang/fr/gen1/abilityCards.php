@@ -5,7 +5,7 @@ return [
         'meta' => 'Informations',
         'attribute_bonuses' => 'Bonus d\'attributs',
         'original_effects' => 'Effet(s) sur la carte',
-        'effects' => 'Effet(s) corrigés',
+        'effects' => 'Effet(s) corrigé(s)',
     ],
     'titles' => [
         'singular' => 'une carte capacité',
@@ -15,6 +15,7 @@ return [
         'front_media_id' => 'Recto',
         'back_media_id' => 'Verso',
         'condition' => 'État',
+        'language_type' => 'Langues de la carte',
         'observations' => 'Observations',
         'type' => 'Couleur',
         'power_level' => 'Niveau de Puissance',
@@ -23,10 +24,18 @@ return [
         'french_name' => 'Nom Français',
         'original_text' => 'Texte Anglais',
         'original_french_text' => 'Texte Français',
-        'english_text' => 'Texte Anglais',
-        'french_text' => 'Texte Français',
+        'english_text' => 'Texte Anglais corrigé',
+        'french_text' => 'Texte Français corrigé',
         'reference' => 'Référence',
         'series_reference' => 'Référence dans le set',
+        'pyrus_attribute_bonus' => 'Bonus Pyrus',
+        'aquos_attribute_bonus' => 'Bonus Aquos',
+        'subterra_attribute_bonus' => 'Bonus Subterra',
+        'haos_attribute_bonus' => 'Bonus Haos',
+        'darkus_attribute_bonus' => 'Bonus Darkus',
+        'ventus_attribute_bonus' => 'Bonus Ventus',
+        'created_at' => 'Crée le',
+        'updated_at' => 'Mise à jour le',
     ],
     'placeholders' => [
         'condition' => 'Comme neuf, etc.',
@@ -43,5 +52,8 @@ return [
     'help' => [
         'reference' => 'Situé tout en bas à gauche de la carte',
         'series_reference' => 'Situé tout en bas à droite de la carte',
-    ]
+    ],
+    'actions' => [
+        'create_another' => 'Créer & Ajouter une autre carte capacité',
+    ],
 ];

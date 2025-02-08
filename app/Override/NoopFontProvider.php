@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Override;
 
 use Filament\FontProviders\Contracts\FontProvider;
 use Illuminate\Contracts\Support\Htmlable;

@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Enums\Gen1\Cards;
 
+use App\Enums\Concerns\BackedEnum;
 use Filament\Support\Colors\Color;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
 enum ReferenceCardType: string implements HasColor, HasLabel
 {
+    use BackedEnum;
+
     case BATTLE_GEAR = 'battle_gear';
     case EVO = 'baku_evo';
     case MOBILE_ASSAULT = 'mobile_assault';

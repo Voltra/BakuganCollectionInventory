@@ -15,6 +15,7 @@ return [
         'front_media_id' => 'Front photo',
         'back_media_id' => 'Back photo',
         'condition' => 'Condition',
+        'language_type' => 'Card Language Type',
         'observations' => 'Observations',
         'type' => 'Color',
         'power_level' => 'Power Level',
@@ -27,6 +28,14 @@ return [
         'french_text' => 'Foreign Text',
         'reference' => 'Reference',
         'series_reference' => 'Series\' Reference',
+        'pyrus_attribute_bonus' => 'Pyrus bonus',
+        'aquos_attribute_bonus' => 'Aquos bonus',
+        'subterra_attribute_bonus' => 'Subterra bonus',
+        'haos_attribute_bonus' => 'Haos bonus',
+        'darkus_attribute_bonus' => 'Darkus bonus',
+        'ventus_attribute_bonus' => 'Ventus bonus',
+        'created_at' => 'Created At',
+        'updated_at' => 'Updated At',
     ],
     'placeholders' => [
         'condition' => 'Near mint, etc.',
@@ -43,5 +52,8 @@ return [
     'help' => [
         'reference' => 'Located at the bottom left of the card',
         'series_reference' => 'Located at the bottom right of the card',
-    ]
+    ],
+    'actions' => [
+        'create_another' => 'Create & Add another ability card',
+    ],
 ];

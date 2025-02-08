@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace App\Enums\Gen1\Cards;
 
+use App\Enums\Concerns\BackedEnum;
 use Filament\Support\Contracts\HasLabel;
 
 enum CardLanguageType: string implements HasLabel
 {
+    use BackedEnum;
+
     case EN_ONLY = 'en_only';
     case EN_FR = 'en_fr';
     case FULL_ART = 'fullart';
@@ -41,16 +44,16 @@ enum CardLanguageType: string implements HasLabel
         ]);
     }
 
+    public function isTCG(): bool
+    {
+        return ! $this->isOCG();
+    }
+
     public function isOCG(): bool
     {
         return in_array($this, [
             self::JAP_EN,
             self::JAP,
         ]);
-    }
-
-    public function isTCG(): bool
-    {
-        return ! $this->isOCG();
     }
 }

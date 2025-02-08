@@ -17,7 +17,6 @@ export default {
         './vendor/bezhansalleh/filament-language-switch/resources/**/*.blade.php',
         './vendor/pxlrbt/filament-spotlight/resources/**/*.blade.php',
         './vendor/njxqlus/filament-progressbar/resources/**/*.blade.php',
-        './vendor/awcodes/filament-curator/resources/**/*.blade.php',
         './vendor/mohamedsabil83/filament-forms-tinyeditor/resources/**/*.blade.php',
         './vendor/voltra/filament-svg-avatar/resources/**/*.blade.php',
         './vendor/solution-forest/filament-tree/resources/**/*.blade.php',

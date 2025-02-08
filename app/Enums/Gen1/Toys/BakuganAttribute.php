@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace App\Enums\Gen1\Toys;
 
+use App\Enums\Concerns\BackedEnum;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 
 enum BakuganAttribute: string implements HasIcon, HasLabel
 {
+    use BackedEnum;
+
     case ATTRIBUTELESS = 'gen1_attributeless';
     case AQUOS = 'gen1_aquos';
     case DARKUS = 'gen1_darkus';

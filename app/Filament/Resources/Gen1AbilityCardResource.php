@@ -7,6 +7,7 @@ namespace App\Filament\Resources;
 use App\Enums\AdminGroup;
 use App\Enums\Gen1\Cards\AbilityCardType;
 use App\Enums\Gen1\Cards\CardCondition;
+use App\Enums\Gen1\Cards\CardLanguageType;
 use App\Enums\Gen1\Cards\CardRarity;
 use App\Enums\Gen1\Toys\BakuganAttribute;
 use App\Filament\Pages\Concerns\Gen1Page;
@@ -25,22 +26,14 @@ class Gen1AbilityCardResource extends Resource
 
     protected static ?string $model = Gen1AbilityCard::class;
 
-    protected static ?string $navigationIcon = 'gameicon-card-ace-diamonds';
+    protected static ?string $navigationIcon = 'gameicon-lightning-trio'; /* gameicon-card-ace-diamonds */ /* gameicon-roman-shield */
 
     protected static ?string $recordTitleAttribute = 'english_name';
-
-    protected static bool $hasTitleCaseModelLabel = true;
-
-    #[\Override]
-    public static function getAdminGroup(): AdminGroup
-    {
-        return AdminGroup::GEN1;
-    }
 
     #[\Override]
     public static function getTranslationKey(): string
     {
-        return 'abilityCards';
+        return 'gen1/abilityCards';
     }
 
     #[\Override]
@@ -55,11 +48,17 @@ class Gen1AbilityCardResource extends Resource
                                 CuratorPicker::make('front_media_id')
                                     ->label(__l('gen1/abilityCards.fields.front_media_id'))
                                     ->required()
-                                    ->relationship('frontImage', 'id'),
+                                    ->relationship('frontImage', 'id')
+                                    ->directory('gen1/abilityCard/front/')
+                                    ->limitToDirectory()
+                                    ->imageResizeTargetWidth('568px'),
                                 CuratorPicker::make('back_media_id')
                                     ->label(__l('gen1/abilityCards.fields.back_media_id'))
                                     ->nullable()
-                                    ->relationship('backImage', 'id'),
+                                    ->relationship('backImage', 'id')
+                                    ->directory('gen1/abilityCard/back/')
+                                    ->limitToDirectory()
+                                    ->imageResizeTargetWidth('568px'),
                             ])->columns(1),
                             Forms\Components\Group::make([
                                 Forms\Components\Select::make('condition')
@@ -70,7 +69,7 @@ class Gen1AbilityCardResource extends Resource
                                 Forms\Components\Textarea::make('observations')
                                     ->label(__l('gen1/abilityCards.fields.observations'))
                                     ->placeholder(__l('gen1/abilityCards.placeholders.observations'))
-                                    ->required(),
+                                    ->default(''),
                             ])->columns(1),
                         ])->columns(2),
                     ])->collapsed(false),
@@ -86,13 +85,19 @@ class Gen1AbilityCardResource extends Resource
                         ->placeholder(__l('gen1/abilityCards.placeholders.power_level'))
                         ->columnSpan(1)
                         ->numeric(),
+                    Forms\Components\Select::make('language_type')
+                        ->label(__l('gen1/abilityCards.fields.language_type'))
+                        ->columnSpan(1)
+                        ->required()
+                        ->options(CardLanguageType::class)
+                        ->default(CardLanguageType::EN_FR),
                     Forms\Components\Select::make('rarity')
                         ->label(__l('gen1/abilityCards.fields.rarity'))
                         ->columnSpan(1)
                         ->required()
                         ->options(CardRarity::class)
                         ->default(CardRarity::COMMON),
-                ])->columns(3)
+                ])->columns(2)
                     ->columnSpanFull(),
                 Forms\Components\Group::make([
                     Forms\Components\TextInput::make('english_name')
@@ -104,7 +109,7 @@ class Gen1AbilityCardResource extends Resource
                         ->label(__l('gen1/abilityCards.fields.french_name'))
                         ->placeholder(__l('gen1/abilityCards.placeholders.french_name'))
                         ->columnSpan(1),
-                ])->columns()
+                ])->columns(2)
                     ->columnSpanFull(),
                 Forms\Components\Section::make(__l('gen1/abilityCards.sections.attribute_bonuses'))
                     ->collapsed()
@@ -174,18 +179,19 @@ class Gen1AbilityCardResource extends Resource
                     ]),
                 Forms\Components\Group::make([
                     Forms\Components\Section::make(__l('gen1/abilityCards.sections.original_effects'))
-                        ->columnSpan(1)
+                        ->columnSpanFull()
                         ->schema([
                             Forms\Components\Textarea::make('original_text')
                                 ->label(__l('gen1/abilityCards.fields.original_text'))
                                 ->placeholder(__l('gen1/abilityCards.placeholders.original_text'))
-                                ->required(),
+                                ->required()
+                                ->default(''),
                             Forms\Components\Textarea::make('original_french_text')
                                 ->label(__l('gen1/abilityCards.fields.original_french_text'))
                                 ->placeholder(__l('gen1/abilityCards.placeholders.original_french_text')),
                         ]),
                     Forms\Components\Section::make(__l('gen1/abilityCards.sections.effects'))
-                        ->columnSpan(1)
+                        ->columnSpanFull()
                         ->schema([
                             Forms\Components\Textarea::make('english_text')
                                 ->label(__l('gen1/abilityCards.fields.english_text'))
@@ -194,7 +200,7 @@ class Gen1AbilityCardResource extends Resource
                                 ->label(__l('gen1/abilityCards.fields.french_text'))
                                 ->placeholder(__l('gen1/abilityCards.placeholders.french_text')),
                         ]),
-                ])->columns()
+                ])->columns(2)
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('reference')
                     ->label(__l('gen1/abilityCards.fields.reference'))
@@ -216,9 +222,16 @@ class Gen1AbilityCardResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->actionsPosition(Tables\Enums\ActionsPosition::BeforeColumns)
+            ->defaultSort('english_name')
             ->columns([
                 CuratorColumn::make('front_media_id')
-                    ->label(__l('gen1/abilityCards.fields.front_media_id')),
+                    ->label(__l('gen1/abilityCards.fields.front_media_id'))
+                    ->toggleable()
+                    ->width('142px'),
+                Tables\Columns\TextColumn::make('rarity')
+                    ->label(__l('gen1/abilityCards.fields.rarity'))
+                    ->tooltip(fn (CardRarity $state) => $state->getDescription()),
                 Tables\Columns\TextColumn::make('type')
                     ->label(__l('gen1/abilityCards.fields.type'))
                     ->badge(),
@@ -229,14 +242,22 @@ class Gen1AbilityCardResource extends Resource
                     ->label(__l('gen1/abilityCards.fields.power_level'))
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('language_type')
+                    ->label(__l('gen1/abilityCards.fields.language_type'))
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('english_name')
                     ->label(__l('gen1/abilityCards.fields.english_name'))
+                    ->sortable()
                     ->searchable()
-                    ->description(fn (Gen1AbilityCard $card) => $card->english_text),
+                    ->tooltip(fn (Gen1AbilityCard $card) => $card->english_text)
+                    ->description(fn (Gen1AbilityCard $card) => \Str::words($card->english_text, 8, ' [...]')),
                 Tables\Columns\TextColumn::make('french_name')
                     ->label(__l('gen1/abilityCards.fields.french_name'))
+                    ->sortable()
                     ->searchable()
-                    ->description(fn (Gen1AbilityCard $card) => $card->french_text),
+                    ->tooltip(fn (Gen1AbilityCard $card) => $card->french_text)
+                    ->description(fn (Gen1AbilityCard $card) => \Str::words($card->french_text, 8, ' [...]')),
                 Tables\Columns\TextColumn::make('pyrus_attribute_bonus')
                     ->label(__l('gen1/abilityCards.fields.pyrus_attribute_bonus'))
                     ->numeric()

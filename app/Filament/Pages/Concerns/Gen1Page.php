@@ -12,4 +12,9 @@ trait Gen1Page
     {
         return AdminGroup::GEN1->getLabel();
     }
+
+    public static function getAdminGroup(): AdminGroup
+    {
+        return AdminGroup::GEN1;
+    }
 }

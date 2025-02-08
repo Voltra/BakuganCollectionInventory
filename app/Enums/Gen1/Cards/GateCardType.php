@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace App\Enums\Gen1\Cards;
 
+use App\Enums\Concerns\BackedEnum;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 
 enum GateCardType: string implements HasIcon, HasLabel
 {
+    use BackedEnum;
+
     case GOLD = 'gen1_gold';
     case SILVER = 'gen1_silver';
     case COPPER = 'gen1_copper';
