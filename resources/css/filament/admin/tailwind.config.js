@@ -8,7 +8,9 @@ export default {
     darkMode: ['selector', '&:not(.light *)'],
     content: [
         './app/Filament/**/*.php',
+        './app/Forms/**/*.php',
         './resources/views/filament/**/*.blade.php',
+        './resources/views/forms/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
         './vendor/laravel/**/resources/**/*.blade.php',
         ////

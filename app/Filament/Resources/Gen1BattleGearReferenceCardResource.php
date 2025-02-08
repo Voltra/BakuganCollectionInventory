@@ -11,6 +11,7 @@ use App\Enums\Gen1\Toys\SupportAttribute;
 use App\Filament\Pages\Concerns\Gen1Page;
 use App\Filament\Resources\Gen1BattleGearReferenceCardResource\Pages;
 use App\Filament\Resources\Gen1BattleGearReferenceCardResource\RelationManagers;
+use App\Forms\Components\EnumSelect;
 use App\Models\Gen1BattleGearReferenceCard;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
@@ -100,12 +101,13 @@ class Gen1BattleGearReferenceCardResource extends Resource
                 ])->columns(2)
                     ->columnSpanFull(),
                 Forms\Components\Group::make([
-                    Forms\Components\Select::make('left_attribute')
+                    EnumSelect::make('left_attribute')
                         ->label(__l('gen1/battleGearReferenceCards.fields.left_attribute'))
                         ->placeholder(__l('gen1/battleGearReferenceCards.placeholders.left_attribute'))
                         ->required()
                         ->options(SupportAttribute::class)
                         ->different('right_attribute')
+                        ->extraAttributes(['class' => 'light'])
                         ->columnSpanFull(),
                     Forms\Components\Section::make(__l('gen1/battleGearReferenceCards.sections.left_original_effects'))
                         ->columnSpan(1)
@@ -132,12 +134,13 @@ class Gen1BattleGearReferenceCardResource extends Resource
                 ])->columns(2)
                     ->columnSpan(1),
                 Forms\Components\Group::make([
-                    Forms\Components\Select::make('right_attribute')
+                    EnumSelect::make('right_attribute')
                         ->label(__l('gen1/battleGearReferenceCards.fields.right_attribute'))
                         ->placeholder(__l('gen1/battleGearReferenceCards.placeholders.right_attribute'))
                         ->required()
                         ->options(SupportAttribute::class)
                         ->different('left_attribute')
+                        ->extraAttributes(['class' => 'light'])
                         ->columnSpanFull(),
                     Forms\Components\Section::make(__l('gen1/battleGearReferenceCards.sections.right_original_effects'))
                         ->columnSpan(1)

@@ -14,9 +14,13 @@
     overflow: visible!important;
 }
 
-.choices__list--single .choices__item,
+.choices__list--single .choices__item:not(.choices__placeholder),
 .dark\:text-white:not(label *, .fi-section-header-heading) {
     &:is(.dark *):is(.light *) {
         @apply text-black;
     }
+}
+
+.enumSelect .choices__list--dropdown .choices__list {
+    @apply grid grid-cols-3;
 }
